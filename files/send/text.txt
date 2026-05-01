@@ -1,0 +1,33 @@
+TUGAS BESAR SOCKET PROGRAMMING
+MATA KULIAH JARINGAN KOMPUTER
+
+Judul:
+Implementasi Socket Programming Menggunakan Python
+
+Anggota Kelompok:
+Assyifa Dwi Safitri   	103072400064 
+Amirah Essary Y.S	103074400077  
+Keisha Hananta 		103072400149  
+
+
+Deskripsi Program:
+Program ini dibuat untuk mengimplementasikan komunikasi data menggunakan socket programming dengan bahasa Python. Program ini mendukung pengiriman data berupa teks dan file dengan metode komunikasi sebagai berikut:
+- Unicast (Single Thread dan Multi Thread)
+- Multicast
+- Broadcast
+
+Fitur Program:
+1. Mengirim pesan berupa kata, kalimat, dan paragraf
+2. Mengirim file dokumen (TXT, DOCX, PDF)
+3. Mengirim file multimedia (JPG, PNG, MP3, MP4)
+4. Mendukung komunikasi antar client dan server
+
+Tujuan:
+- Memahami konsep dasar socket programming
+- Mengimplementasikan komunikasi jaringan menggunakan TCP dan UDP
+- Menguji pengiriman data dalam berbagai format
+
+Kesimpulan:
+Program berhasil dijalankan dengan baik dan mampu mengirim serta menerima data sesuai dengan spesifikasi yang diberikan.
+
+Terima kasih.
