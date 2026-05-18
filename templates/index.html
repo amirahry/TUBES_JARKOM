@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Socket Project Dashboard</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: "Segoe UI", Arial, sans-serif;
+            background: linear-gradient(135deg, #0f172a, #1e293b);
+            color: #e5e7eb;
+            min-height: 100vh;
+            padding: 30px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .header h1 {
+            font-size: 42px;
+            margin-bottom: 8px;
+            color: #ffffff;
+        }
+
+        .header p {
+            color: #94a3b8;
+            font-size: 16px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: rgba(15, 23, 42, 0.9);
+            border: 1px solid rgba(148, 163, 184, 0.2);
+            border-radius: 18px;
+            padding: 22px;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.25);
+            transition: 0.25s;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            border-color: #38bdf8;
+        }
+
+        .number {
+            width: 38px;
+            height: 38px;
+            background: #2563eb;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-bottom: 14px;
+        }
+
+        .card h3 {
+            margin: 0 0 10px;
+            font-size: 19px;
+            color: #f8fafc;
+        }
+
+        .card p {
+            color: #94a3b8;
+            font-size: 14px;
+            min-height: 38px;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            border-radius: 10px;
+            border: 1px solid #334155;
+            background: #020617;
+            color: white;
+            margin: 10px 0;
+        }
+
+        input::file-selector-button {
+            border: none;
+            padding: 8px 12px;
+            border-radius: 8px;
+            background: #334155;
+            color: white;
+            cursor: pointer;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 10px;
+            background: #2563eb;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 8px;
+            transition: 0.2s;
+        }
+
+        button:hover {
+            background: #1d4ed8;
+            transform: scale(1.02);
+        }
+
+        .start {
+            background: #16a34a;
+        }
+
+        .start:hover {
+            background: #15803d;
+        }
+
+        .stop {
+            background: #dc2626;
+        }
+
+        .stop:hover {
+            background: #b91c1c;
+        }
+
+        .send {
+            background: #7c3aed;
+        }
+
+        .send:hover {
+            background: #6d28d9;
+        }
+
+        .log-section {
+            margin-top: 30px;
+            background: rgba(2, 6, 23, 0.95);
+            border-radius: 18px;
+            padding: 22px;
+            border: 1px solid rgba(148, 163, 184, 0.2);
+        }
+
+        .log-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logs {
+            margin-top: 15px;
+            height: 280px;
+            overflow-y: auto;
+            background: #020617;
+            border-radius: 12px;
+            padding: 15px;
+            font-family: Consolas, monospace;
+            font-size: 14px;
+            color: #22c55e;
+        }
+
+        .log-line {
+            padding: 7px 0;
+            border-bottom: 1px solid #1e293b;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 999px;
+            background: #0f766e;
+            color: #ccfbf1;
+            font-size: 12px;
+            margin-bottom: 10px;
+        }
+
+        .exit {
+            background: #475569;
+        }
+
+        .exit:hover {
+            background: #334155;
+        }
+    </style>
+</head>
+
+<body>
+<div class="container">
+
+    <div class="header">
+        <h1>Socket Project Dashboard</h1>
+        <p>Web interface untuk TCP, Multicast, dan Broadcast Socket Programming</p>
+    </div>
+
+    <div class="grid">
+
+        <div class="card">
+            <div class="number">1</div>
+            <span class="badge">TCP</span>
+            <h3>Server Single Thread</h3>
+            <p>Menjalankan server TCP sederhana untuk menerima satu koneksi.</p>
+
+            <form action="/start-tcp-server" method="post">
+                <button class="start" type="submit">Start Server</button>
+            </form>
+
+            <form action="/stop-tcp-server" method="post">
+                <button class="stop" type="submit">Stop Server</button>
+            </form>
+        </div>
+
+        <div class="card">
+            <div class="number">2</div>
+            <span class="badge">TCP</span>
+            <h3>Server Multi Thread</h3>
+            <p>Menjalankan server TCP yang bisa menangani beberapa client.</p>
+
+            <form action="/start-tcp-server" method="post">
+                <button class="start" type="submit">Start Multi Server</button>
+            </form>
+
+            <form action="/stop-tcp-server" method="post">
+                <button class="stop" type="submit">Stop Multi Server</button>
+            </form>
+        </div>
+
+        <div class="card">
+            <div class="number">3</div>
+            <span class="badge">Client</span>
+            <h3>Client Kirim Text</h3>
+            <p>Mengirim pesan teks ke TCP server yang sedang berjalan.</p>
+
+            <form action="/send-tcp-text" method="post">
+                <input type="text" name="message" placeholder="Tulis pesan TCP..." required>
+                <button class="send" type="submit">Kirim Text</button>
+            </form>
+        </div>
+
+        <div class="card">
+            <div class="number">4</div>
+            <span class="badge">Client</span>
+            <h3>Client Kirim File</h3>
+            <p>Upload file dari browser lalu kirim ke TCP server.</p>
+
+            <form action="/send-tcp-file" method="post" enctype="multipart/form-data">
+                <input type="file" name="file" required>
+                <button class="send" type="submit">Kirim File</button>
+            </form>
+        </div>
+
+        <div class="card">
+            <div class="number">5</div>
+            <span class="badge">Multicast</span>
+            <h3>Multicast Sender</h3>
+            <p>Mengirim pesan ke multicast group.</p>
+
+            <form action="/send-multicast" method="post">
+                <input type="text" name="message" placeholder="Pesan multicast..." required>
+                <button class="send" type="submit">Kirim Multicast</button>
+            </form>
+        </div>
+
+        <div class="card">
+            <div class="number">6</div>
+            <span class="badge">Multicast</span>
+            <h3>Multicast Receiver</h3>
+            <p>Menerima pesan dari multicast sender.</p>
+
+            <form action="/start-multicast-receiver" method="post">
+                <button class="start" type="submit">Start Receiver</button>
+            </form>
+
+            <form action="/stop-multicast-receiver" method="post">
+                <button class="stop" type="submit">Stop Receiver</button>
+            </form>
+        </div>
+
+        <div class="card">
+            <div class="number">7</div>
+            <span class="badge">Broadcast</span>
+            <h3>Broadcast Sender</h3>
+            <p>Mengirim pesan broadcast ke receiver.</p>
+
+            <form action="/send-broadcast" method="post">
+                <input type="text" name="message" placeholder="Pesan broadcast..." required>
+                <button class="send" type="submit">Kirim Broadcast</button>
+            </form>
+        </div>
+
+        <div class="card">
+            <div class="number">8</div>
+            <span class="badge">Broadcast</span>
+            <h3>Broadcast Receiver</h3>
+            <p>Menerima pesan broadcast dari sender.</p>
+
+            <form action="/start-broadcast-receiver" method="post">
+                <button class="start" type="submit">Start Receiver</button>
+            </form>
+
+            <form action="/stop-broadcast-receiver" method="post">
+                <button class="stop" type="submit">Stop Receiver</button>
+            </form>
+        </div>
+
+        <div class="card">
+            <div class="number">9</div>
+            <span class="badge">Exit</span>
+            <h3>Exit</h3>
+            <p>Untuk keluar dari aplikasi web, tutup tab browser dan hentikan Flask di terminal.</p>
+
+            <button class="exit" onclick="alert('Tutup tab browser, lalu stop Flask dari terminal.')">
+                Exit
+            </button>
+        </div>
+
+    </div>
+
+    <div class="log-section">
+        <div class="log-header">
+            <h2>Output Log</h2>
+
+            <form action="/clear-logs" method="post">
+                <button class="stop" type="submit">Clear Logs</button>
+            </form>
+        </div>
+
+        <div class="logs">
+            {% for log in logs %}
+                <div class="log-line">{{ log }}</div>
+            {% else %}
+                <div>Belum ada log...</div>
+            {% endfor %}
+        </div>
+    </div>
+
+</div>
+</body>
+</html>
